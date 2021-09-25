@@ -118,6 +118,7 @@ function draw() {
     console.log(matrix[8][8])
     if(count %10 == 0){
         clear();
+        
         matrix = OGMatrix;
     }
 
