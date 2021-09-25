@@ -8,7 +8,7 @@ var blackArr = [];
 var eat1Arr = [];
 
 
-var matrix = [
+var OGMatrix = [
     [6, 1, 0, 2, 2, 0, 0, 0, 1, 2, 3, 0, 2, 1, 1, 2, 1, 5, 6],
     [0, 5, 1, 0, 0, 2, 3, 0, 0, 1, 1, 0, 0, 1, 1, 5, 1, 1, 1],
     [0, 1, 0, 2, 0, 1, 3, 0, 0, 1, 0, 0, 1, 1, 1, 1, 3, 1, 2],
@@ -28,6 +28,8 @@ var matrix = [
     [0, 1, 1, 1, 0, 1, 0, 1, 2, 1, 2, 0, 2, 1, 1, 1, 1, 1, 1],
     [6, 1, 0, 0, 0, 3, 2, 0, 0, 1, 0, 0, 2, 1, 1, 1, 1, 2, 6],
 ]
+
+let matrix = OGMatrix;
 
 
 function setup() {
@@ -58,14 +60,29 @@ function setup() {
                 blackArr.push(black);
             }else if(matrix[y][x] == 7){
                 var eat1grass = new Eatgrass1(x, y);
-                eat1Arr.push(eatgrass1);
+                eat1Arr.push(eat1grass);
             }
         }
     }
 }
 
+
+let count = 0;
 function draw() {
-    background('#acacac');
+    let select = document.getElementById("seasons");
+    let option = select.options[select.selectedIndex];
+    let season = option.value;
+    let backgroundColor = '#acacac';
+    if(season == "Summer"){
+        backgroundColor = "Tomato";
+    }else if(season == "Winter"){
+        backgroundColor = "SteelBlue";
+    }else if(season == "Spring"){
+        backgroundColor = "SpringGreen";
+    }else{
+        backgroundColor = "Chocolate";
+    }
+    background(backgroundColor);
     for (var i = 0; i < matrix.length; i++) {
         for (var j = 0; j < matrix[i].length; j++) {
             if (matrix[i][j] == 1) {
@@ -75,7 +92,7 @@ function draw() {
                 fill("orange");
                 rect(j * side, i * side, side, side);
             } else if (matrix[i][j] == 0) {
-                fill('#acacac');
+                fill(backgroundColor);
                 rect(j * side, i * side, side, side);
             }else if(matrix[i][j] == 3){
                 fill("red");
@@ -94,6 +111,14 @@ function draw() {
                 rect(j * side, i * side, side, side);
             }
         }
+    }
+
+    count++;
+    //console.log(count);
+    console.log(matrix[8][8])
+    if(count %10 == 0){
+        clear();
+        matrix = OGMatrix;
     }
 
 
