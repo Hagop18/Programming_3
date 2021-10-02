@@ -1,4 +1,6 @@
 let Eatgrass = require("./Eatgrass");
+let Turned = require("./Turned.js");
+var random = require("./random");
 
 module.exports = class Eatgrass1 extends Eatgrass {
    constructor(x, y) {

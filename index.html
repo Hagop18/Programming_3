@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf8">
     <script src="p5.js"></script>
-    <script src="class.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
     <style>
         div{
@@ -42,7 +42,7 @@
           <option id = "fall" value="Fall">Fall</option>
         </select>
     </br>
-    <input id = "accident" type="button" class="button" value="Accident">
+    <input onclick="mess()" type="button" class="button" value="Accident">
       </form>
 </body>
 

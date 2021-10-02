@@ -1,3 +1,5 @@
+var random = require("./random");
+
 module.exports = class Grass {
    constructor(x, y) {
       this.x = x;

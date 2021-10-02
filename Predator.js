@@ -1,4 +1,6 @@
 let Eatgrass = require("./Eatgrass");
+let Blue = require("./Blue.js");
+var random = require("./random");
 
 module.exports = class Predator extends Eatgrass {
    constructor(x, y) {
