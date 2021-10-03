@@ -1,8 +1,8 @@
-let Eatgrass = require("./Eatgrass");
+let Eater = require("./Eater");
 let Blue = require("./Blue");
 var random = require("./random");
 
-class Turned extends Eatgrass {
+class Turned extends Eater {
    constructor(x, y) {
       super(x, y);
    }
@@ -100,7 +100,6 @@ class Turned extends Eatgrass {
          }
       }
    }
-};
-
+}
 
 module.exports = Turned;

@@ -1,8 +1,7 @@
 let Eater = require("./Eater");
-let Pred = require("./Pred.js");
 var random = require("./random");
 
-class Blue extends Eater {
+class Pred extends Eater {
    constructor(x, y) {
       super(x, y);
    }
@@ -23,7 +22,7 @@ class Blue extends Eater {
          var x = cord[0];
          var y = cord[1];
 
-         matrix[y][x] = 5;
+         matrix[y][x] = 4;
          matrix[this.y][this.x] = 0;
 
          this.x = x;
@@ -32,14 +31,14 @@ class Blue extends Eater {
    }
 
    eat() {
-      var fundCords = this.getDirections(1);
+      var fundCords = this.getDirections(2);
       var cord = random(fundCords);
 
       if (cord) {
          var x = cord[0];
          var y = cord[1];
 
-         matrix[y][x] = 5;
+         matrix[y][x] = 4;
          matrix[this.y][this.x] = 0;
 
          this.x = x;
@@ -51,19 +50,19 @@ class Blue extends Eater {
 
          if (this.energy == 6) {
             this.die();
-            matrix[y][x] = 4;
-            let turned = new Pred(x, y);
-            turnedArr.push(turned);
+            matrix[y][x] = 5;
+            let blue = new Blue(x, y);
+            blueArr.push(blue);
             this.energy = 3;
          }
 
-         for (var i in xotArr) {
-            if (x == xotArr[i].x && y == xotArr[i].y) {
-               xotArr.splice(i, 1);
+         for (var i in eatArr) {
+            if (x == eatArr[i].x && y == eatArr[i].y) {
+               eatArr.splice(i, 1);
             }
          }
 
-         if (this.multiply == 10) {
+         if (this.multiply == 6) {
             this.mul();
             this.multiply = 0;
          }
@@ -84,22 +83,22 @@ class Blue extends Eater {
          var x = cord[0];
          var y = cord[1];
 
-         var blue = new Blue(x, y);
-         blueArr.push(blue);
+         var turned = new Turned(x, y);
+         turnedArr.push(turned);
 
-         matrix[y][x] = 5;
+         matrix[y][x] = 4;
       }
    }
 
    die() {
       matrix[this.y][this.x] = 0;
 
-      for (var i in blueArr) {
-         if (this.x == blueArr[i].x && this.y == blueArr[i].y) {
-            blueArr.splice(i, 1);
+      for (var i in turnedArr) {
+         if (this.x == turnedArr[i].x && this.y == turnedArr[i].y) {
+            turnedArr.splice(i, 1);
          }
       }
    }
 }
 
-module.exports = Blue;
+module.exports = Pred;

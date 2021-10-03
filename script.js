@@ -1,5 +1,4 @@
-
-   var socket = io();
+var socket = io();
 function setup() {
    let side = 25;
 
@@ -53,11 +52,8 @@ function setup() {
          }
       }
    }
-
-
-
 }
 
-   function mess() {
-      socket.emit("mess");
-   }
+function mess() {
+   socket.emit("mess");
+}

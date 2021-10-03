@@ -1,7 +1,7 @@
 let express = require("express");
 let app = express();
 let server = require("http").Server(app);
-var io = require('socket.io')(server);
+var io = require("socket.io")(server);
 var fs = require("fs");
 
 app.use(express.static("."));
@@ -49,7 +49,6 @@ const Eatgrass1 = require("./Eatgrass1");
 const Predator = require("./Predator");
 const Turned = require("./Turned");
 
-
 function emptyAllArrays() {
    xotArr.splice(0, xotArr.length);
    eatArr.splice(0, eatArr.length);
@@ -90,7 +89,6 @@ function fix() {
    // io.socket.emit("send matrix", matrix);
 }
 
-
 function parameters() {
    for (var y = 0; y < matrix.length; y++) {
       for (var x = 0; x < matrix[y].length; x++) {
@@ -120,7 +118,6 @@ function parameters() {
    }
 }
 
-
 function mess() {
    for (var i = 0; i < matrix.length; i++) {
       for (var j = 0; j < matrix[i].length; j++) {
@@ -132,14 +129,13 @@ function mess() {
    setTimeout(fix, 2000);
 }
 
-io.on('connection', function (socket) {
+io.on("connection", function (socket) {
    parameters();
    socket.on("mess", mess);
 });
 parameters();
 
-
-function game(){
+function game() {
    for (var i in xotArr) {
       xotArr[i].mul();
    }
@@ -179,17 +175,14 @@ function game(){
    io.sockets.emit("send matrix", matrix);
 }
 
-setInterval(game, 1000);
-
-
-
+setInterval(game, 500);
 
 var statistics = {};
 
-setInterval(function() {
+setInterval(function () {
    statistics.grass = xotArr.length;
    statistics.eatgrass = eat1Arr;
-   fs.writeFile("statistics.json", JSON.stringify(statistics), function(){
-      console.log("send")
-  })
-}, 3000)
+   fs.writeFile("statistics.json", JSON.stringify(statistics), function () {
+      console.log("send");
+   });
+}, 1000);

@@ -1,5 +1,5 @@
 let Grass = require("./Grass");
-//let Turned = require("./Turned");
+let Turned = require("./Turned");
 var random = require("./random");
 
 class Eatgrass extends Grass {
@@ -52,9 +52,9 @@ class Eatgrass extends Grass {
 
          if (this.energy == 10) {
             this.die();
-            /*matrix[y][x] = 4;
+            matrix[y][x] = 4;
             let turned = new Turned(x, y);
-            turnedArr.push(turned);*/
+            turnedArr.push(turned);
             this.energy = 3;
          }
 
@@ -101,7 +101,6 @@ class Eatgrass extends Grass {
          }
       }
    }
-};
-
+}
 
 module.exports = Eatgrass;
